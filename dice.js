@@ -36,14 +36,29 @@ function scoring (array) {
     let scoreValues = [];
     for (let i = 0; i < array.length; i++) {
         if (array[i] % 2 === 0) {
-            console.log(array[i]*10);
+            console.log(array[i]*5);
         }
-        if ()
+        if (array[i] % 2 !== 0) {
+            console.log(array[i]*10)
+        }
     }
+}
+function dupeCheck (array) {
+    result = { };
+    for (let i = 0; i < array.length; i++) {
+        if (!result[a[i]])
+            result[a[i]] = 0;
+        ++result[a[i]];
+    }
+    console.log(result);
 }
 // print to html score table and break at winning score
 // turns
 
 
 // call to roll at button click
-document.getElementById("rollButton").addEventListener("click", scoring(produceRoll()));
+document.getElementById("rollButton").addEventListener("click", produceRoll);
+
+// document.getElementById("rollButton").addEventListener("click",)
+
+//*** find a way to call the functions/run all of them at button click***//
