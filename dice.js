@@ -21,7 +21,8 @@ function produceRoll () {
     d10.innerHTML = die10;
     d12.innerHTML = die12;
     d20.innerHTML = die20;
-    return [die4, die6, die8, die10, die12, die20];
+    let rollArray = die4.concat(die6, die8, die10, die12, die20);
+    return rollArray;
 }
 
 
@@ -36,29 +37,33 @@ function scoring (array) {
     let scoreValues = [];
     for (let i = 0; i < array.length; i++) {
         if (array[i] % 2 === 0) {
-            console.log(array[i]*5);
+           scoreValues.push(array[i]*5);
         }
         if (array[i] % 2 !== 0) {
-            console.log(array[i]*10)
+            scoreValues.push(array[i]*10);
         }
     }
-}
-function dupeCheck (array) {
-    result = { };
-    for (let i = 0; i < array.length; i++) {
-        if (!result[a[i]])
-            result[a[i]] = 0;
-        ++result[a[i]];
-    }
-    console.log(result);
+    // function dupeCheck (array) {
+    //     result = { };
+    //     for (let i = 0; i < array.length; i++) {
+    //         if (!result[array[i]])
+    //             result[array[i]] = 0;
+    //         ++result[array[i]];
+    //     }
+    //     console.log(result);
+    // 
+    document.getElementById("score").innerHTML = scoreValues;
 }
 // print to html score table and break at winning score
 // turns
 
-
+function runGame (roll, scoring) {
+    return;
+}
 // call to roll at button click
-document.getElementById("rollButton").addEventListener("click", produceRoll);
+// document.getElementById("rollButton").addEventListener("click", runGame (produceRoll(), scoring()));
 
 // document.getElementById("rollButton").addEventListener("click",)
 
 //*** find a way to call the functions/run all of them at button click***//
+//** also consider functions inside one large function for scoring**//
