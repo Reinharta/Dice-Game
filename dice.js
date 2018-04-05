@@ -36,26 +36,25 @@ function produceRoll () {
 function scoring (array) {
     let scoreValues = [];
     for (let i = 0; i < array.length; i++) {
+        // Evens or Odds
         if (array[i] % 2 === 0) {
            scoreValues.push(array[i]*5);
         }
         if (array[i] % 2 !== 0) {
             scoreValues.push(array[i]*10);
         }
+        
     }
-    // function dupeCheck (array) {
-    //     result = { };
-    //     for (let i = 0; i < array.length; i++) {
-    //         if (!result[array[i]])
-    //             result[array[i]] = 0;
-    //         ++result[array[i]];
-    //     }
-    //     console.log(result);
-    // 
+    function dupeCheck (array) {
+       let result = { };
+        for (let i = 0; i < array.length; i++) {
+            if (!result[array[i]])
+                result[array[i]] = 0;
+            scoreValues.push(++result[array[i]]);
+        }
+         } 
     document.getElementById("score").innerHTML = scoreValues;
 }
-// print to html score table and break at winning score
-// turns
 
 function runGame (roll, scoring) {
     return;
