@@ -28,39 +28,54 @@ function produceRoll () {
 
 // assess dice and create new score array
 
-// function assessRoll (array) {
+function assessRoll (rollArray = produceRoll()) {
+    return rollArray;
+}
 
-// }
-
-// score array sum and add to total score
-function scoring (array) {
-    let scoreValues = [];
-    for (let i = 0; i < array.length; i++) {
-        // Evens or Odds
-        if (array[i] % 2 === 0) {
-           scoreValues.push(array[i]*5);
+// Check for Duplicates
+function dupeCheck (array = assessRoll()) {
+       let dupeCount = [0];
+       let dupeList = [];
+       let sortedArr = array.sort(function(a, b){return a-b});
+        for (let i = 0; i < sortedArr.length; i++) {
+            if (sortedArr[i + 1] == sortedArr[i]) {
+            dupeList.push(sortedArr[i]);
+            ++dupeCount;
+            }
         }
-        if (array[i] % 2 !== 0) {
-            scoreValues.push(array[i]*10);
+        console.log(dupeList)
+        console.log(dupeCount)
+    }
+
+// Assign score values for Evens/Odds
+function scoring (rollArray = assessRoll()) {
+    let scoreValues = [];
+    for (let i = 0; i < rollArray.length; i++) {
+        // Evens or Odds
+        if (rollArray[i] % 2 === 0) {
+           scoreValues.push(rollArray[i]*5);
+        }
+        if (rollArray[i] % 2 !== 0) {
+            scoreValues.push(rollArray[i]*10);
         }
         
     }
-    function dupeCheck (array) {
-       let result = { };
-        for (let i = 0; i < array.length; i++) {
-            if (!result[array[i]])
-                result[array[i]] = 0;
-            scoreValues.push(++result[array[i]]);
-        }
-         } 
+     
     document.getElementById("score").innerHTML = scoreValues;
 }
 
-function runGame (roll, scoring) {
-    return;
+// Produce Sum of Evens/Odds & Dupe scores
+function totalScore (evenOddsTotal, dupeTotal) {
+    let scoreSum = evenOddsTotal + dupeTotal
+    return scoreSum
+}
+
+// Run Game
+function runGame (scoreSum) {
+    return
 }
 // call to roll at button click
-// document.getElementById("rollButton").addEventListener("click", runGame (produceRoll(), scoring()));
+document.getElementById("rollButton").addEventListener("click", runGame(totalScore(scoring(), dupeCheck())));
 
 // document.getElementById("rollButton").addEventListener("click",)
 

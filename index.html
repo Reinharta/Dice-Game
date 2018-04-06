@@ -34,9 +34,9 @@
             <p>Score: <div id="score"></div></p>
         </div>
 
-    <div class="row">
+    <div class="row" id="rollButton">
         <div class="col-sm-12">
-        <button onclick="runGame(scoring(produceRoll()))">Roll Dice</button>
+        <button onclick="runGame(totalScore(scoring(), dupeCheck()))">Roll Dice</button>
         </div>
     </div>
 
