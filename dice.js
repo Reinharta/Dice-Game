@@ -33,22 +33,39 @@ function assessRoll (rollArray = produceRoll()) {
 }
 
 // Check for Duplicates
-function dupeCheck (array = assessRoll()) {
-       let dupeCount = [0];
-       let dupeList = [];
-       let sortedArr = array.sort(function(a, b){return a-b});
-        for (let i = 0; i < sortedArr.length; i++) {
-            if (sortedArr[i + 1] == sortedArr[i]) {
-            dupeList.push(sortedArr[i]);
-            ++dupeCount;
-            }
-        }
-        console.log(dupeList)
-        console.log(dupeCount)
-    }
+// function dupeCheck (array) {
+//        let dupeCount = [0];
+//        let dupeList = [];
+//        let sortedArr = array.sort(function(a, b){return a-b});
+//         for (let i = 0; i < sortedArr.length; i++) {
+//             if (sortedArr[i + 1] == sortedArr[i]) {
+//             dupeList.push(sortedArr[i]);
+//             ++dupeCount;
+//             }
+//         }
+//         // console.log(dupeList)
+//         // console.log(dupeCount)
+//         let duplicateTotals = [];
+//         duplicateTotals.push(dupeList[i], dupeCount[i]);
+//         console.log(duplicateTotals);
+//     // }
+
+//     // let starting = {};
+//     // let reducer = function (tally, number) {
+//     //     let i = 0;
+//     //     if (!tally[number]) {
+//     //         tally[number] = 1;
+//     //     } else {
+//     //         tally[number] = tally[number] + 1;
+//     //     }
+//     //     i++;
+//     //     console.log(tally);
+//     // }
+//     // array.reduce(function (reducer, starting));
+// }
 
 // Assign score values for Evens/Odds
-function scoring (rollArray = assessRoll()) {
+function scoring (rollArray) {
     let scoreValues = [];
     for (let i = 0; i < rollArray.length; i++) {
         // Evens or Odds
@@ -60,22 +77,56 @@ function scoring (rollArray = assessRoll()) {
         }
         
     }
-     
-    document.getElementById("score").innerHTML = scoreValues;
+    return scoreValues;
 }
 
-// Produce Sum of Evens/Odds & Dupe scores
-function totalScore (evenOddsTotal, dupeTotal) {
-    let scoreSum = evenOddsTotal + dupeTotal
-    return scoreSum
+// Produce Sum of single roll 
+function rollScoring (scoreValuesArr) {
+    let scoreHistArr = [];
+    let rollScore = scoreValuesArr.reduce(function(total, num){
+    return total + num;
+  }, 0);
+    document.getElementById("score").innerHTML = rollScore;
+//     scoreHistArr.push(rollScore);
+//     let totalScore = scoreHistArr.reduce(function(total, num){
+//     return total + num;
+// });
+document.getElementById("totalScore").innerHTML = totalScore; 
+return totalScore;
 }
 
+//add roll score to total score
+// function totalScore (scoreHistArr) {
+// let totalScore = scoreHistArr.reduce(function(total, num){
+//     return total + num;
+// });
+// document.getElementById("totalScore").innerHTML = totalScore; 
+// }
+// print total score
+// function scorePrint (totalScore) {
+
+   
+// }
 // Run Game
-function runGame (scoreSum) {
-    return
+function runGame (scoreSum, rollScore) {
+    let scoreHistArr = [];
+    scoreHistArr.push(rollScore);
+    let totalScore = scoreHistArr.reduce(function(total, num){
+    return total + num;
+});
+    if (scoreSum >= 1000) {
+        console.log("You've met your goal");
+    }
+    else {
+        document.getElementById("status").innerHTML = "Keep Rolling";
+    }
 }
 // call to roll at button click
-document.getElementById("rollButton").addEventListener("click", runGame(totalScore(scoring(), dupeCheck())));
+document.getElementById("rollButton").addEventListener("click", function () {runGame(rollScoring(scoring(assessRoll())));
+});
+
+// call to add roll score to total score
+// document.getElementById("scoreButton").addEventListener("click", function () {scorePrint(totalScore(rollScoring(rollArray(produceRoll))))})
 
 // document.getElementById("rollButton").addEventListener("click",)
 

@@ -30,13 +30,21 @@
         <div class="col-sm-1">
             <div id="die20" class="dice">0</div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <p>Score: <div id="score"></div></p>
+        </div>
+        <div class="col-sm-3">
+            <p>Total Score: <div id="totalScore"></div></p>
         </div>
 
     <div class="row" id="rollButton">
         <div class="col-sm-12">
-        <button onclick="runGame(totalScore(scoring(), dupeCheck()))">Roll Dice</button>
+        <button>Roll Dice</button>
+        </div>
+    </div>
+    <br>
+    <div class="row" id="status">
+        <div class="col-sm-12">
         </div>
     </div>
 
